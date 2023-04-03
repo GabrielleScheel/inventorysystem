@@ -30,6 +30,13 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void AddItemToInventory(FName NewItem);
 
+	UFUNCTION(BlueprintCallable)
+	void RemoveItemFromInventory(FName ItemToRemove);
+
+	UFUNCTION(BlueprintPure)
+	bool QueryInventoryForItem(FName ItemName);
+
+
 private:
 	TArray<FName> Inventory;
 

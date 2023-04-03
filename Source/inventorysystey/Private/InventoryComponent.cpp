@@ -31,14 +31,31 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 	// ...
 }
-
+// Getter Function for inventory
 TArray<FName> UInventoryComponent::GetInventory()
 {
 	return Inventory; 
 }
 
+// Adds item to inventory
 void UInventoryComponent::AddItemToInventory(FName NewItem)
 {
 	Inventory.Add(NewItem);
+}
+
+// Removes item from inventory if item present
+void UInventoryComponent::RemoveItemFromInventory(FName ItemToRemove)
+{
+	if (QueryInventoryForItem(ItemToRemove))
+	{
+		Inventory.Remove(ItemToRemove);
+	}
+
+}
+
+// Check if the inventory has items
+bool UInventoryComponent::QueryInventoryForItem(FName ItemName)
+{
+	return Inventory.Contains(ItemName);
 }
 
